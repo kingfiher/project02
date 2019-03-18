@@ -1,0 +1,42 @@
+{%extends 'users/base.html'%} 
+ <!--  brainappのbase.htmlを反映している -->
+ 
+ {%load crispy_forms_tags %} 
+ <!-- cssファイルであるcrispyを反映する為にこの文を記す -->
+
+{%block content%}
+<!-- htmlの中身が始まることを合図 -->
+
+<div class="content-section">
+    <form method="POST">
+<!-- methodにはGETとPOSTを使うことができ、POSTの方がセキュリティが高い （試しに登録すてURLを見てみよう）-->
+
+        {%csrf_token %} 
+        <!-- How to use it <form method="post">POSTを使う為には{% csrf_token %}が必要である -->
+
+        <fieldset class="form-group">
+        <legend class="border-bottom mb-4"> Join Today </legend>
+                <!-- {{form}} -->
+                <!-- {{form.as_p}} -->
+        {{form|crispy}}
+        
+       </fieldset>
+
+<div class="form-group">
+    <button class="btn btn-outline-info" type="submit">Sign Up</button>
+</div>
+    </form>
+
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Already Have Account?
+            <a class="ml-2" href="">Sign In</a>
+            <!-- <a class="ml-2" href="mind-register">Sign In</a> -->
+        </small>
+ 
+    </div>
+
+</div>
+
+{%endblock content%}
+<!-- htmlの終了を合図 -->
